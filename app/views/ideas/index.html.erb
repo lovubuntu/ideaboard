@@ -1,0 +1,25 @@
+<h1>List of Ideas</h1>
+<table width="100%">
+  <thead>
+    <th>Like?</th>
+    <th>Unlike?</th>
+    <th>Idea Name</th>
+    <th>Votes</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+      <% @ideas.each do |idea|%>
+        <tr>
+          <td>
+            <%= button_to '&uarr;'.html_safe, upvote_idea_path(idea), method: :post, class: 'tiny button' %>
+          </td>
+          <td>
+            <%= button_to '&darr;'.html_safe, downvote_idea_path(idea), method: :post, class: 'tiny button' %>
+          </td>
+          <td><%=idea.name%></td>
+          <td><%=idea.votes%></td>
+          <td><%=idea.description%></td>
+        </tr>
+      <%end%>
+  </tbody>
+</table>

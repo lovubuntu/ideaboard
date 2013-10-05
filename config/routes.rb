@@ -1,4 +1,14 @@
 Ideaboard::Application.routes.draw do
+
+  root to: 'welcome#index'
+  get 'hello/(:name)' => 'welcome#hello'
+  get 'ideas' => 'ideas#index'
+  resources :ideas do
+    member do
+      post :upvote
+      post :downvote
+    end
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
